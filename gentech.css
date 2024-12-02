@@ -372,6 +372,10 @@ body {
     font-size: 18px;
 }
 
+.ods-2 {
+    flex-direction: row;
+}
+
 .gentech {
     margin-right: -60px;
 }
@@ -441,8 +445,9 @@ footer {
     }
 
     .hero-subtitle {
-        font-size: 1.2rem;
+        font-size: 1em !important;
         max-width: 100%;
+        text-align: center;
     }
 }
 
@@ -458,6 +463,7 @@ footer {
     }
 
     .service-card {
+        margin-bottom: 70px;
         padding: 1.5rem;
     }
 }
@@ -484,14 +490,27 @@ footer {
 
     .ods p {
         width: 100%;
-        margin: 0 10px;
-        font-size: 16px;
+        margin: 20px 5px;
+        font-size: 14px;
+        text-align: center;
     }
 
     .ods-2 {
-        flex-direction: column-reverse;
+        flex-direction: column;
     }
 }
+
+/* Additional Responsive Tweaks */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 
 /* Responsive Button */
 @media (max-width: 768px) {
@@ -524,59 +543,78 @@ footer {
     }
 }
 
-/* Additional Responsive Tweaks */
-html, body {
-    max-width: 100%;
-    overflow-x: hidden;
+
+
+/* Estilos para menu responsivo */
+@media (max-width: 768px) {
+    .nav-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        position: relative;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        flex-direction: column;
+        z-index: 1000;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .nav-links.menu-ativo {
+        display: flex;
+        opacity: 0.992;
+        background-color: var(--color-primary);
+    }
+
+    .nav-links a {
+        padding: 15px;
+        text-align: center;
+        text-decoration: none;
+        color: rgb(227, 227, 227);
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    .mobile-menu-toggle .bar {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        margin: 5px 0;
+        transition: 0.4s;
+    }
+
+    .mobile-menu-toggle.open .bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .mobile-menu-toggle.open .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .mobile-menu-toggle.open .bar:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-}
+/* Estilos para telas maiores */
+@media (min-width: 769px) {
+    .mobile-menu-toggle {
+        display: none;
+        background-color: black;
+    }
 
-/* Fluid Typography */
-:root {
-    --fluid-min-width: 320;
-    --fluid-max-width: 1200;
-    --fluid-min-size: 16;
-    --fluid-max-size: 18;
-    --fluid-min-ratio: calc(var(--fluid-min-size) / var(--fluid-min-width));
-    --fluid-max-ratio: calc(var(--fluid-max-size) / var(--fluid-max-width));
-}
-
-body {
-    font-size: clamp(
-        calc(var(--fluid-min-size) * 1px), 
-        calc((var(--fluid-min-ratio) + var(--fluid-max-ratio)) / 2 * 100vw), 
-        calc(var(--fluid-max-size) * 1px)
-    );
-}
-
-.mobile-menu-toggle {
-    display: flex; 
-    cursor: pointer;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 30px;
-    height: 25px;
-}
-
-.mobile-menu-toggle .bar {
-    width: 100%;
-    height: 3px;
-    background-color: #333;
-    transition: all 0.3s ease;
-}
-
-.mobile-menu-toggle.open .bar:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 6px);
-}
-
-.mobile-menu-toggle.open .bar:nth-child(2) {
-    opacity: 0;
-}
-
-.mobile-menu-toggle.open .bar:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -6px);
+    .nav-links {
+        display: flex !important;
+    }
 }

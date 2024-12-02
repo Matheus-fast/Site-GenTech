@@ -59,45 +59,25 @@
                 });
             });
 
-            // Inicialização
-            document.addEventListener('DOMContentLoaded', () => {
-                createShapes();
-                initParallax();
-
-                // Seleciona os elementos
+            // Script para menu móvel
+document.addEventListener('DOMContentLoaded', () => {
     const navContent = document.querySelector('.nav-content');
     const navLinks = document.querySelector('.nav-links');
-    
-    // Cria o botão de menu mobile se não existir
-    let mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-    if (!mobileMenuToggle) {
-        mobileMenuToggle = document.createElement('div');
-        mobileMenuToggle.classList.add('mobile-menu-toggle');
-        mobileMenuToggle.innerHTML = `
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        `;
-        
-        // Insere o botão de toggle antes dos links de navegação
-        navContent.insertBefore(mobileMenuToggle, navLinks);
-    }
-    
-    // Garante que os links de navegação tenham estilo mobile
-    navLinks.classList.add('nav-links-mobile');
-    
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+
     // Toggle de visibilidade do menu
-    mobileMenuToggle.addEventListener('click', (event) => {
-        event.stopPropagation(); // Impede que o evento propague
+    mobileMenuToggle.addEventListener('click', (e) => {
+        console.log('clicou')
+        e.stopPropagation(); // Impede que o evento se propague
         navLinks.classList.toggle('menu-ativo');
-        mobileMenuToggle.classList.toggle('aberto');
+        mobileMenuToggle.classList.toggle('open');
     });
     
     // Fecha o menu quando um link é clicado
     navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             navLinks.classList.remove('menu-ativo');
-            mobileMenuToggle.classList.remove('aberto');
+            mobileMenuToggle.classList.remove('open');
         });
     });
 
@@ -105,7 +85,7 @@
     document.addEventListener('click', (event) => {
         if (!navContent.contains(event.target)) {
             navLinks.classList.remove('menu-ativo');
-            mobileMenuToggle.classList.remove('aberto');
+            mobileMenuToggle.classList.remove('open');
         }
     });
 });
