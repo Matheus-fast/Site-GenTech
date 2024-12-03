@@ -529,13 +529,13 @@ img {
         right: 20px;
         top: 20px;
         z-index: 1100;
+        margin-top: 7px !important;
     }
 
     .mobile-menu-toggle .bar {
         width: 25px;
         height: 3px;
         background-color: var(--color-text);
-        margin: 5px 0;
         transition: 0.4s;
     }
 
@@ -566,12 +566,19 @@ img {
         flex-direction: column;
         z-index: 1000;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.4s ease-in-out;
     }
 
     .nav-links.menu-ativo {
         display: flex;
         opacity: 0.992;
+        animation-delay: 1s;
         background-color: var(--color-primary);
+        visibility: visible;
+        transform: translateY(0);
     }
 
     .nav-links a {
